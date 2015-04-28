@@ -4,12 +4,15 @@ parameters:
   image:
     type: string
     description: Image used for servers
+    default: CentOS-7
   key_name:
     type: string
     description: SSH key to connect to the servers
+    default: chandra-texas-3
   flavor:
     type: string
     description: flavor used by the servers
+    default: Micro-Small
   pool_id:
     type: string
     description: Pool to contact
