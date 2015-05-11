@@ -25,6 +25,10 @@ parameters:
     type: string
 #    default: a1d998bf-6a6a-4f69-b181-935213e6606b
 resources:
+  web_server_anti_affnity:
+    type: OS::Nova::ServerGroup
+    properties:
+      policies: ['anti-affinity']
   server:
     type: OS::Nova::Server
     properties:
@@ -36,6 +40,7 @@ resources:
          - network: {get_param: network_id}
       user_data: {get_param: user_data}
       user_data_format: RAW
+      scheduler_hints: {group: {get_resource: web_server_anti_affnity}}
 
 
   member:
